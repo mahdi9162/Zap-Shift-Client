@@ -1,0 +1,20 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+@plugin "daisyui";
+
+/* Light Theme */
+@plugin "daisyui/theme" {
+  name: 'light-theme';
+  default: true;
+  --color-primary: #caeb66;
+  --color-secondary: #03373d;
+  --color-base-content: #dadada;
+  --color-neutral: #606060;
+}
+
+body {
+  font-family: 'Urbanist', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

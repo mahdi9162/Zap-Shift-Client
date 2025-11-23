@@ -6,7 +6,7 @@ import gradientColor from '../../../../assets/be-a-merchant-bg.png';
 const OurPriority = () => {
   return (
     <Container>
-      <section className="bg-[#03373D] p-20 rounded-3xl my-24 ">
+      <section className="bg-[#03373D] p-20 rounded-3xl my-24 bg-no-repeat" style={{ backgroundImage: `url(${gradientColor})` }}>
         <div className="flex">
           {/* left */}
           <div className="flex-1">

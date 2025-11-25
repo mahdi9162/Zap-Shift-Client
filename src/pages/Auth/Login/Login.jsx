@@ -2,11 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 const Login = () => {
   const { signInWithEmail } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
@@ -21,7 +22,7 @@ const Login = () => {
       .then((res) => {
         const userData = res.user;
         alert('Signin successful! Welcome ' + userData?.displayName);
-        navigate('/');
+        navigate(location?.state || '/');
       })
       .catch((error) => {
         console.log(error);

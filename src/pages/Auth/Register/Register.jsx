@@ -1,11 +1,12 @@
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import axios from 'axios';
 
 const Register = () => {
   const { signUpWithEmail, updateUserProfile } = useAuth();
+  const location = useLocation;
   const navigate = useNavigate();
 
   const {
@@ -40,11 +41,11 @@ const Register = () => {
               displayName: data.name,
               photoURL: photoUrl,
             };
-            
+
             updateUserProfile(userProfile)
               .then(() => {
                 alert('Register successful! Welcome ' + userData?.displayName);
-                navigate('/');
+                navigate(location.state || '/');
               })
               .catch((error) => {
                 console.log('Profile update error:', error);
@@ -112,8 +113,8 @@ const Register = () => {
             <button className="btn btn-neutral w-96 bg-[#caeb66] border-none text-black shadow-lg mt-4 ">Register</button>
           </div>
           <p className="my-2">
-            Already have an account?{' '}
-            <Link to="/login" className="text-[#8FA748]">
+            Already have an account?
+            <Link state={location.state} to="/login" className="text-[#8FA748]">
               Login
             </Link>
           </p>

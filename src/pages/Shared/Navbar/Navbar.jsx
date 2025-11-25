@@ -61,13 +61,15 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-4">
-          <div>
-            <div className="avatar avatar-online">
-              <div className="w-10 rounded-full">
-                <img src={user?.photoURL} />
+          {user && (
+            <div>
+              <div className="avatar avatar-online">
+                <div className="w-10 rounded-full">
+                  <img src={user?.photoURL} />
+                </div>
               </div>
             </div>
-          </div>
+          )}
           {user ? (
             <Link onClick={handleLogOut} className="btn rounded-xl">
               Sign Out
@@ -77,7 +79,7 @@ const Navbar = () => {
               Sign In
             </Link>
           )}
-          <Link to="/" className="btn bg-[#caeb66] rounded-xl">
+          <Link to="/rider" className="btn bg-[#caeb66] rounded-xl">
             Be a Rider
           </Link>
         </div>

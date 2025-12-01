@@ -2,13 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Container from '../../../components/Container/Container';
-import { FaTrashAlt, FaUserCheck } from 'react-icons/fa';
+import { FaEye, FaTrashAlt, FaUserCheck } from 'react-icons/fa';
 import { IoPersonRemoveSharp } from 'react-icons/io5';
 import Swal from 'sweetalert2';
-import useAuth from '../../../hooks/useAuth';
 
 const ApproveRiders = () => {
-  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { refetch, data: riders = [] } = useQuery({
     queryKey: ['riders', 'pending'],
@@ -59,7 +57,8 @@ const ApproveRiders = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
-              <th>Status</th>
+              <th>Application Status</th>
+              <th>Work Status</th>
               <th>District</th>
               <th>Phone No</th>
               <th>NID</th>
@@ -80,6 +79,7 @@ const ApproveRiders = () => {
                     {rider.status}
                   </p>
                 </td>
+                <td>{rider.workStatus}</td>
                 <td>{rider.riderDistrict}</td>
                 <td>{rider.riderPhone}</td>
                 <td>{rider.riderNID}</td>
@@ -87,6 +87,9 @@ const ApproveRiders = () => {
                 <td>{rider.bikeBrandModelYear}</td>
                 <td>{rider.bikeRegNo}</td>
                 <td>
+                  <button onClick={() => handleApproval(rider)} className="btn">
+                    <FaEye />
+                  </button>
                   <button onClick={() => handleApproval(rider)} className="btn">
                     <FaUserCheck />
                   </button>
